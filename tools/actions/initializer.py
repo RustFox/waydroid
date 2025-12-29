@@ -245,6 +245,8 @@ class StdoutRedirect(logging.StreamHandler):
 def remote_init_proc_entry(args, pipe):
     out = StdoutRedirect(pipe)
     sys.stdout = sys.stderr = out
+
+    helpers.logging.add_verbose_log_level()
     logging.getLogger().addHandler(out)
 
     try:
